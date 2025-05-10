@@ -1,0 +1,32 @@
+name: ✨ Run All
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  cicak:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ✨ Deploy Apps
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          script: |
+            export NVM_DIR=~/.nvm
+            source ~/.nvm/nvm.sh
+            nvm use lts/iron
+            cd engine/
+            git stash
+            git pull origin main
+            npm i
+            npm i -g pm2
+            npm run build
+            pm2 del "engine-sugar"
+            pm2 start "npm run dev" --name "engine-sugar"
+          # ls -la
+          # set -a
+          # source .env
+          # set +a
