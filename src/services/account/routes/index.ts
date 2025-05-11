@@ -38,9 +38,9 @@ router.post("/check", async (req, res) => {
 
   const user = await findByAddress(address as string);
   if (user) {
-    res.json({ success: true, username: user.username, address: user.address });
+    res.json({ success: true, username: user.username, address: user.address, bio: user.bio });
   } else {
-    res.json({ success: false, username: "", address: "" });
+    res.json({ success: false, username: "", address: "", bio: "" });
   }
 });
 

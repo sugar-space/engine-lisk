@@ -12,10 +12,11 @@ export async function add(body: Record<string, unknown>) {
     throw new Error("Username and address are required");
   }
 
-  const user = await findByUsername(body.username as string);
-  if (user) {
-    throw new Error("Username already exists");
-  }
+  // const user = await findByUsername(body.username as string);
+  // console.log("user", user);
+  // if (user && body.description === "") {
+  //   throw new Error("Username already exists");
+  // }
 
   const addressed = await findByAddress(body.address as string);
 
@@ -23,12 +24,16 @@ export async function add(body: Record<string, unknown>) {
     // if user new
     const newItem = new UserModel(body);
     newItem.username = String(body.username).toLowerCase();
+    newItem.bio = String(body.bio).toLowerCase();
     await newItem.save();
 
     return newItem._id;
   } else {
     // if user updated
-    await UserModel.findOneAndUpdate({ address: body.address }, { username: body.username });
+    await UserModel.findOneAndUpdate(
+      { address: body.address },
+      { username: body.username, bio: body.bio }
+    );
 
     return addressed._id;
   }

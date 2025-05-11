@@ -6,6 +6,7 @@ const AccountSchema: Schema = new Schema(
   {
     address: { type: String, required: true },
     username: { type: String, required: false },
+    bio: { type: String, required: false },
   },
   {
     timestamps: true,
