@@ -73,7 +73,7 @@ router.get("/:address/:type", async (req, res) => {
         transactions = await getAllTransactions(
           {
             // type: "in",
-            creatorAddress: address,
+            creator: address,
           },
           Number(limit),
           Number(page)
