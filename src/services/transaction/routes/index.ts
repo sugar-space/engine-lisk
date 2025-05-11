@@ -41,7 +41,7 @@ router.get("/summary/:address", async (req, res) => {
     let transactions;
     transactions = await getAllTransactions(
       {
-        $or: [{ creator: address }, { from: address }],
+        $or: [{ creator: address }, { fromAddress: address }],
       },
       Number(limit),
       Number(page)
@@ -81,8 +81,8 @@ router.get("/:address/:type", async (req, res) => {
       } else {
         transactions = await getAllTransactions(
           {
-            type: "out",
-            from: address,
+            // type: "out",
+            fromAddress: address,
           },
           Number(limit),
           Number(page)
