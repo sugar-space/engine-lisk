@@ -13,7 +13,7 @@ router.get("/mediashare/:address/:symbol", async (req, res) => {
 
   const payload = {
     donator: "rei 🍭",
-    message: "Notification test 🤙🤪",
+    message: "Hi Lisk Spark 👋",
     amount: 0.1,
     symbol: symbol ?? "ETH",
     media: {
@@ -45,7 +45,7 @@ router.get("/alerts/:address/:symbol", async (req, res) => {
 
   const payload = {
     donator: "rei 🍭",
-    message: "Notification test 🤙🤪",
+    message: "Hi Lisk Spark 👋",
     amount: 100,
     symbol: symbol ?? "USDC",
   };
