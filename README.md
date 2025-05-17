@@ -38,7 +38,3 @@ Backend service powering Sugar's interaction with the Lisk blockchain. Built to 
 ├── .env
 └── dist/
 ```
-
-## 🌐 Repo
-
-> GitHub: [sugar-space/engine-lisk](https://github.com/sugar-space/engine-lisk)
